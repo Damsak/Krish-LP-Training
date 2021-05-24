@@ -1,0 +1,35 @@
+{
+"frontInventory": [
+    {"Medicine":"panadol", "quantity" :4},
+    {"Medicine":"paracetamol", "quantity" :3},
+    {"Medicine":"syrup1", "quantity" :7}
+
+],
+
+"backInventory": [
+    {"Medicine":"cream2", "quantity" :4},
+    {"Medicine":"cream3", "quantity" :4},
+    {"Medicine":"Syrup4", "quantity" :4},
+    {"Medicine":"Panadol", "quantity" :4}
+
+],
+
+"distributor": [
+    {"Medicine":"syrup7", "quantity" :9},
+    {"Medicine":"cream1", "quantity" :4},
+    {"Medicine":"panadol", "quantity" :4},
+    {"Medicine":"paracetamol", "quantity" :4}
+
+],
+
+"centralInventory": [
+    {"Medicine":"panadol", "quantity" :4},
+    {"Medicine":"cream6", "quantity" :4},
+    {"Medicine":"syrup10", "quantity" :4},
+    {"Medicine":"cream10", "quantity" :4},
+    {"Medicine":"Cream1", "quantity" :4}
+
+]
+
+
+}
