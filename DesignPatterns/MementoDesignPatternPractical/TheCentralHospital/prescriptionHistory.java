@@ -6,7 +6,7 @@ public class prescriptionHistory {
 	Stack<Prescription.MedicineMemento> history = new Stack<>();
 	
 	public void save(Prescription prescription) {
-		history.push(prescription.save()); //push require cartMemento. But we need previous state. therefore we use cart.save which indirectly return cartmemento
+		history.push(prescription.save()); 
 			}
 	
 	public void revert(Prescription prescription) {
