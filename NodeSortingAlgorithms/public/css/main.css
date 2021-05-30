@@ -1,0 +1,17 @@
+body {
+    background-color: #eee;
+    font-size: 32px;
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px;
+    align-content: center;
+}
+
+header, footer {
+    background-color: ghostwhite ;
+    padding: 20px;
+}
