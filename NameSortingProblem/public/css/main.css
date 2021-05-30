@@ -1,0 +1,46 @@
+body {
+    background-color: #eee;
+    font-size: 32px;
+}
+
+.wrapper {
+    width: auto;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 10px;
+}
+
+header, footer {
+    background-color: ghostwhite ;
+    padding: 20px;
+}
+
+.names {
+    background-color: silver;
+    padding: 20px;
+    overflow: scroll;
+    padding: 10px;
+    border-radius:5px 30px 30px 5px;
+}
+
+.conditions {
+    background-color: dimgrey;
+    padding: 20px;
+    overflow: scroll;
+    padding: 10px;
+    border-radius:5px 30px 30px 5px;
+}
+.namelist {
+    padding: 10px;
+    overflow: scroll;
+    background-color: rgb(156, 144, 144);
+
+}
+
+.topic {
+    height: 100px;
+    width: 500px;
+    padding: 10px;
+    border-radius:5px 30px 30px 5px;
+    background-color: rgb(76, 123, 158);
+}
