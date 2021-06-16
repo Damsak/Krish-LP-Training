@@ -4,7 +4,6 @@ Details about the projects in this folder.
 
 ## MicroservicesApplication
 
-- Contains Implementation Upto video 10
 
 ## Includes
 
@@ -12,7 +11,8 @@ Details about the projects in this folder.
 - Separate Project for Models - justmavenformodel
 - Profile Service - ProfileService
 - Vehicle Service - VehicleService
-- OAuth server with separate mysql Token store - OauthserverWithMySqlJDBCTokenStore  
+- OAuth server with separate mysql Token store -  OauthserverWithMySqlJDBCTokenStore  
+- OAuth server with in memory store - SimpleOauthServer
 
 ## Services 
 

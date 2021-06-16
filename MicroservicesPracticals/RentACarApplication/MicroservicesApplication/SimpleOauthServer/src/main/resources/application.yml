@@ -1,0 +1,19 @@
+server:
+  port: 8282
+
+#spring:
+ # security:
+ #   user:
+  #    name: root
+   #   password: root
+    #  roles: ADMIN,USER
+#security:
+ # oauth2:
+  #  client:
+   #   client-id: mobile
+    #  client-secret: pin
+     # access-token-validity-seconds: 3600
+     # authorized-grant-types: refresh_token,authorization_code,password,client-credentials
+     # scope: READ,WRITE
+    #authorization:
+     # check-token-access: permitAll

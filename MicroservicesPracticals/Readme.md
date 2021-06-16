@@ -4,7 +4,7 @@ Details about the projects in this folder.
 
 ## Important 
 
-### InitialProject(SpringbootBasics) - 1,2,3,4,5 Videos from the playlist
+### InitialProject(SpringbootBasics) - 1,2,3,4 Videos from the playlist
 - Initial spring boot project with basics. 
 
 ### ConfigurationServers - 5,6 Videos from the playlist

@@ -4,12 +4,10 @@ Details about the projects in this folder.
 
 ## Important 
 
-### MicroservicesApplication
-- Contains Implementation upto video 10. 
+### MicroservicesApplication - 7,8,9 Videos
 - No role based Authentication. 
 
-### ApplicationWithKeycloak
-- Contains Implementation from video 10.
+### ApplicationWithKeycloak - 7,8,9,10,11
 - Role based authentication is implemented using keycloak. 
 
 
