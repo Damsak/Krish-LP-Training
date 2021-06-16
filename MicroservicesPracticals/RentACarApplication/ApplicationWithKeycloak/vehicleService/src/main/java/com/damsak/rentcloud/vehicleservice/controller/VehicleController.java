@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -19,12 +20,14 @@ public class VehicleController {
     VehicleService vehicleService;
 
     @RequestMapping(value = "/vehicle", method = RequestMethod.POST)
+    @RolesAllowed("admin")
     public Vehicle save(@RequestBody Vehicle vehicle){
 
         return vehicleService.save(vehicle);
     }
 
     @RequestMapping(value = "/vehicle", method = RequestMethod.GET)
+    @RolesAllowed("admin")
     public ResponseEntity<Vehicle> fetchVehicle(@RequestParam int id) {
 
         Vehicle vehicle= vehicleService.fetchVehicleById(id);
@@ -37,6 +40,7 @@ public class VehicleController {
     }
 
     @RequestMapping(value = "/allVehicles", method = RequestMethod.GET)
+    @RolesAllowed("user")
     public List<Vehicle> findAll(){
 
         List<Vehicle> vehicles = vehicleService.findAll();

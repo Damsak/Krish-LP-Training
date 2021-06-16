@@ -27,13 +27,25 @@ john - user
 
 ## Application Information
 
+## Profile Service
+
 ##  Endpoints available and their access rights
 
-1) Add a Customer (endpoint - "/profiles") -  Only "admin" Role
+1) Add a Customer (endpoint - "/services/profile") -  Only "admin" Role
 
 2) Get a customer with provided id (endpoint - "services/profile?id=6") - Only "admin" Role
 
-3) Get all Customers ( endpoint - "/allProfiles") - Only "user" role.
+3) Get all Customers ( endpoint - "/services/allProfiles") - Only "user" role.
+
+## Vehicle Service
+
+##  Endpoints available and their access rights
+
+1) Add a Vehicle (endpoint - "/services/vehicle") -  Only "admin" Role
+
+2) Get a Vehicle with provided id (endpoint - "services/vehicle?id=12") - Only "admin" Role
+
+3) Get all Vehicle ( endpoint - "/services/allVehicles") - Only "user" role.
 
 ## Steps to execute
 
