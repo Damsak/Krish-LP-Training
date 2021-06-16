@@ -16,13 +16,18 @@ import org.springframework.security.web.authentication.session.RegisterSessionAu
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
 @KeycloakConfiguration
-@Import(KeycloakSpringBootConfigResolver.class)
-@EnableGlobalMethodSecurity(jsr250Enabled = true)
+@Import(KeycloakSpringBootConfigResolver.class) /** Keycloak adapter will look for keycloak.json file. But we want to leverage springboot properties file */
+@EnableGlobalMethodSecurity(jsr250Enabled = true)  /** Java specification request. Avoids redundant annotations across components */
 public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter
 {
     /**
      * Registers the KeycloakAuthenticationProvider with the authentication manager.
      */
+    /**
+     * Change the Granted Authority Mapper.
+     * By default spring security roles are prefixed with "ROLE_"
+     * Simple Authority Mapper make sure that no prefix is added.
+    */
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         KeycloakAuthenticationProvider keycloakAuthenticationProvider=keycloakAuthenticationProvider();
@@ -39,6 +44,10 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter
         return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
     }
 
+
+    /**
+     * Defines the security constraints
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
