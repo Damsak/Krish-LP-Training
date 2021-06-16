@@ -7,7 +7,7 @@ INSERT INTO PERMISSION (NAME) VALUES
 ('delete_profile');
 
 INSERT INTO role (NAME) VALUES
-('ROLE_admin'),('ROLE_operator');
+('ROLE_admin'),('ROLE_editor'),('ROLE_operator');
 
 INSERT INTO PERMISSION_ROLE (PERMISSION_ID, ROLE_ID) VALUES
 (1,1), /*create-> admin */
@@ -15,11 +15,15 @@ INSERT INTO PERMISSION_ROLE (PERMISSION_ID, ROLE_ID) VALUES
 (3,1), /* update admin */
 (4,1), /* delete admin */
 (2,2),  /* read operator */
-(3,2);  /* update operator */
+(3,2),  /* update operator */
+(2,3), /* read operator */
+(3,3); /* update operator */
+
 insert into user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('1', 'damsak','{bcrypt}$2a$10$DUxbAaycQTd7WZ3E3QknIu2KUfoQBb6EmCDAGUHxmgkx9SorPd9wi', 'd@damsak.com', '1', '1', '1', '1');
 insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('2', 'john', '{bcrypt}$2a$10$ny7Mur/Ey7xltqPi4VF9duDmQ2g.rlfWEztYbP7sYx.FH2Qi8Ak2G','d@damsak.com', '1', '1', '1', '1');
-
+insert into  user (id, username,password, email, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked) VALUES ('3', 'nuwan', '{bcrypt}$2a$10$ny7Mur/Ey7xltqPi4VF9duDmQ2g.rlfWEztYbP7sYx.FH2Qi8Ak2G','d@damsak.com', '1', '1', '1', '1');
 INSERT INTO ROLE_USER (ROLE_ID, USER_ID)
 VALUES
 (1, 1) /* damsak-admin */,
-(2, 2) /* john-operatorr */ ;
+(2, 2) /* john-editor */,
+(3,3) /* nuwan-operator */

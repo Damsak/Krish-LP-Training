@@ -1,9 +1,6 @@
 package com.damsak.rentcloud.commons.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 //annotate as entity because this is the class that deals with db
 @Entity
@@ -11,6 +8,7 @@ import javax.persistence.Table;
 public class Customer {
 
     //to make the id primary key and make it auto increment
+
     @Id
     @GeneratedValue
     int id;

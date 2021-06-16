@@ -4,6 +4,7 @@ import com.damsak.rentcloud.commons.model.Customer;
 import com.damsak.rentcloud.profileservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -19,6 +20,7 @@ public class ProfileController {
 
     //this customer model is coming from other project(which just contains the models). we have it as a dependency to this project
     @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    @PreAuthorize("hasAuthority('create_profile')")
     public Customer save(@RequestBody Customer customer){
 
         return customerService.save(customer);
@@ -37,6 +39,7 @@ public class ProfileController {
     }
 
     @RequestMapping(value = "/allProfiles", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_operator')")
     public List<Customer> findAll(){
 
         List<Customer> customers = customerService.findAll();
