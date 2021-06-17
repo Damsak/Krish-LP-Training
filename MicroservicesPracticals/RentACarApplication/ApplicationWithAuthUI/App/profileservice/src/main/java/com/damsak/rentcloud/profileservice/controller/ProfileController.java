@@ -19,17 +19,17 @@ public class ProfileController {
     CustomerService customerService;
 
     //this customer model is coming from other project(which just contains the models). we have it as a dependency to this project
-    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
     @PreAuthorize("hasAuthority('create_profile')")
     public Customer save(@RequestBody Customer customer){
 
         return customerService.save(customer);
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ResponseEntity<Customer> fetchVehicle(@RequestParam int id) {
+    @RequestMapping(value = "/customers/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Customer> fetch(@PathVariable(value = "id") int profileid) {
 
-        Customer customer= customerService.fetchCustomerById(id);
+        Customer customer= customerService.fetchCustomerById(profileid);
 
         if(customer == null) {
             return ResponseEntity.notFound().build(); //dont have a customer profile
@@ -38,8 +38,8 @@ public class ProfileController {
         }
     }
 
-    @RequestMapping(value = "/allProfiles", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('ROLE_operator')")
+    @RequestMapping(value = "/allCustomers", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_admin')")
     public List<Customer> findAll(){
 
         List<Customer> customers = customerService.findAll();

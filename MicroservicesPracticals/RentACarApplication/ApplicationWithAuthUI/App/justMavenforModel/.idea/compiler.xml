@@ -9,8 +9,10 @@
         <outputRelativeToContentRoot value="true" />
         <module name="justmavenformodel" />
         <module name="profile-service" />
+        <module name="rent-ui" />
         <module name="authorization-server" />
         <module name="rentcloudcommons" />
+        <module name="justMavenforModel" />
       </profile>
     </annotationProcessing>
   </component>
@@ -18,6 +20,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="authorization-server" options="-parameters" />
       <module name="profile-service" options="-parameters" />
+      <module name="rent-ui" options="-parameters" />
     </option>
   </component>
 </project>
