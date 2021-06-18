@@ -7,6 +7,7 @@ import com.damsak.rentcloud.rentservice.model.DetailResponse;
 import com.damsak.rentcloud.rentservice.repository.RentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -20,6 +21,7 @@ public class RentServiceImpl implements  RentService {
     @Autowired
     RentRepository rentRepository;
 
+    @LoadBalanced
     @Bean
     RestTemplate getRestTemplate(RestTemplateBuilder builder){
         return builder.build();
@@ -62,13 +64,14 @@ public class RentServiceImpl implements  RentService {
 
     private Customer getCustomer(int customerId){
 
-        Customer customer=restTemplate.getForObject("http://localhost:9191/services/customers/"+customerId,Customer.class);
+        //Talk to discovery server and  get ip address and port of profile
+        Customer customer=restTemplate.getForObject("http://profile/services/customers/"+customerId,Customer.class);
         return customer;
     }
 
     private Vehicle getVehicle(int vehicleId){
 
-        return restTemplate.getForObject("http://localhost:9192/services/vehicles/"+vehicleId,Vehicle.class);
+        return restTemplate.getForObject("http://vehicle/services/vehicles/"+vehicleId,Vehicle.class);
 
     }
 }

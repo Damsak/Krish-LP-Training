@@ -1,8 +1,8 @@
+server:
+  port: 8181
 spring:
   application:
-    name: profile
-server:
-  port: 0
+    name: rent
 eureka:
   client:
     register-with-eureka: true
@@ -10,4 +10,3 @@ eureka:
   instance:
     instance-id: ${spring.application.name}-${random.int}
     hostname: localhost
-

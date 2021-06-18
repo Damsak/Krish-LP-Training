@@ -12,5 +12,5 @@ spring:
       ddl-auto: none
   application:
     name: vehicle
-server:
-  port: 9192
+#server:
+#  port: 9192
