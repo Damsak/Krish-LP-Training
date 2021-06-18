@@ -4,7 +4,13 @@ Details about the projects in this folder.
 
 ## Important 
 
-### ApplicationWithNewServices - 15th video 
+### ApplicationWithNewServices - 15,16 Videos
+
+From Video 16 -
+
+- Implemented Service Discovery with Netflix eureka.
+
+From video 15 - 
 
 - Implemented Service chaining. 
 - Available services -

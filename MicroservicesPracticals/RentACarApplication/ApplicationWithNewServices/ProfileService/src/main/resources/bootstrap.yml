@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: profile
+server:
+  port: 9191
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}-${random.int}
+    hostname: localhost
+

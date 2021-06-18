@@ -10,7 +10,8 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: update
-  application:
-    name: profile
-server:
-  port: 9191
+
+#  application:
+#    name: profile
+#server:
+#  port: 9191
