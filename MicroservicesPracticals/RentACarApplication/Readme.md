@@ -4,6 +4,19 @@ Details about the projects in this folder.
 
 ## Important 
 
+### ApplicationWithNewServices - 15th video 
+
+- Implemented Service chaining. 
+- Available services -
+
+1)Rent service
+2)Vehicle service
+3)Profile Service(Similar to customer service)
+
+- Users can invoke the rent service by passing the id and the service chaining will happen. (Rent service will get matching details from profile and vehicle services)
+
+### SpringTaskProject - 14 video
+
 ### ApplicationWithAuthUI - 7,8,9,10,11,12,13 Videos
 
 ## Special Implementations 
@@ -28,7 +41,7 @@ video 13-
 ### MicroservicesApplication - 7,8,9 Videos
 - No role based Authentication. 
 
-### SpringTaskProject - 11
+
 
 
 
