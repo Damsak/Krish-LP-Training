@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header" style="width: 50%; margin: 0 auto;">
+        <h1>Add a Owner</h1>
+    </div>
+    <div class="card-body" style="width:800px; margin:0 auto;">
+
+         <!-- Create "ngSubmit" event and send data -->
+         <form #petForm = "ngForm" (ngSubmit) = "getOwnerValues(petForm.value)" >
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text"  name="firstName"  class="form-control" id="firstName"  placeholder="Enter First Name">
+            </div>
+            <br>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lastName"  ngModel name="lastName" placeholder="Enter Last Name">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <input type="text" class="form-control" id="designation"  ngModel name="designation" placeholder="Enter Designation">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="insuranceBalance">Insurance Balance</label>
+                <input type="number" class="form-control" id="insuranceBalance"  ngModel name="insuranceBalance" placeholder="Enter insuranceBalance">
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="rbt">rbt</label>
+                <input type="number" class="form-control" id="rbt"   ngModel name="rbt" placeholder="Enter RBT Progress">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+  </div>
+</div>

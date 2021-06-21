@@ -1,0 +1,66 @@
+<div class="card">
+    <div class="card-body" style="width:80%; margin:0 auto;">
+
+      <div class="row">
+        <h3>
+            {{title}} <br/>
+            {{message}} 
+          </h3>
+          <div class="col-md-2"> Animal Filter:</div>
+          <div class="col-md-4">
+            <input type="text" [(ngModel)]="animalFilter">   
+          </div>
+      </div> 
+      <div class="row">
+          <div class="col-md-6">
+              <h6>Filtered by : {{animalFilter}}</h6>
+          </div>
+      </div>
+      <div class="table-responsive">
+          <!-- Show table only if there are Pets -->
+          <table class="table" *ngIf="pets.length">
+              <thead>
+                  <tr>
+                    <th>
+                        <button class="btn btn-primary" (click)="toggleIcon()">
+                            {{showIcon?"Hide":"Show"}} Avator
+                        </button>
+                    </th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Designation</th>
+                  <th>Insurance Balance</th>
+                  <th>RBT progress</th>
+                  <th>Edit</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pet of filteredPets">
+                <td>
+                    <img [src]="pet.icon" *ngIf="showIcon">
+                </td>
+               <td>{{pet.firstName}}</td>
+               <td>{{pet.lastName}}</td> 
+               <td>{{pet.designation}}</td> 
+               <td>{{pet.insuranceBalance| currency:"LKR":"symbol":"3.2-2"}}</td> 
+                <!-- Use Property Binding   -->
+               <td><ac-progress-bar 
+                [progress]='pet.rbtProgress'
+                [firstName]='pet.firstName'
+                (progressClick)='onMessageReceived($event)'
+                ></ac-progress-bar></td>
+
+
+                <td><button class="btn btn-primary" (click)="editPet(pet.id)">
+                    Edit
+                </button>
+                <td><button class="btn btn-danger" (click)="deletePet(pet.id)">
+                    Delete
+                </button>
+                </td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+  </div>
+</div>
