@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Router} from "@angular/router";
 import pets from '../data/pets.json';
+import { OwnerService } from '../owner.service';
 
 @Component({
   selector: 'ac-edit-owners',
@@ -14,12 +16,12 @@ export class EditOwnersComponent implements OnInit {
   lastName:any;
   designation:any;
   insuranceBalance:any;
-  rbt:any;
+  rbtProgress:any;
   private sub: any;
 
  
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private router: Router,private route: ActivatedRoute, private ownerService: OwnerService) {
    }
 
   ngOnInit(): void {
@@ -34,16 +36,24 @@ export class EditOwnersComponent implements OnInit {
      this.lastName = pets[this.id - 1].lastName
      this.designation = pets[this.id - 1].designation
      this.insuranceBalance = pets[this.id - 1].insuranceBalance
-     this.rbt = pets[this.id - 1].rbtProgress
+     this.rbtProgress = pets[this.id - 1].rbtProgress  
     });
   }
 
- // name:string = pets[this.id];
+
+  updateOwner(values:any){
+
+    console.log("Received Values from owner update " + values.firstName + values.designation);
+
+  }
+
 
   ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
-
+  navigatetoOwnerList() {
+    this.router.navigate(['/ownerlist'])
+  }
 
 }

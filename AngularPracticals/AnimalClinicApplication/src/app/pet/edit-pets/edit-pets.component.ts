@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import pets from '../data/pets.json';
+import {Router} from "@angular/router";
+import { PetService } from '../pet.service';
+
 
 
 @Component({
@@ -9,17 +12,16 @@ import pets from '../data/pets.json';
   styleUrls: ['./edit-pets.component.scss']
 })
 export class EditPetsComponent implements OnInit {
+
   id: any;
   firstName:any;
   lastName:any;
   designation:any;
   insuranceBalance:any;
-  rbt:any;
+  rbtProgress:any;
   private sub: any;
 
- 
-
-  constructor(private route: ActivatedRoute) {
+  constructor(private router: Router,private route: ActivatedRoute,private petService: PetService) {
    }
 
 
@@ -35,14 +37,24 @@ export class EditPetsComponent implements OnInit {
      this.lastName = pets[this.id - 1].lastName
      this.designation = pets[this.id - 1].designation
      this.insuranceBalance = pets[this.id - 1].insuranceBalance
-     this.rbt = pets[this.id - 1].rbtProgress
+     this.rbtProgress = pets[this.id - 1].rbtProgress
     });
+  }
+
+  updatePet(values:any){
+
+    console.log("Received Values from Pet updateeee " + values.firstName + values.designation);
+
   }
 
  // name:string = pets[this.id];
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  navigatetoPetList() {
+    this.router.navigate(['/petlist'])
   }
 
 

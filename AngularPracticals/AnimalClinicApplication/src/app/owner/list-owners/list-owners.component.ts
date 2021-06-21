@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import owners from '../data/pets.json';
 import { Owner } from '../ownermodel/Owners.model';
+import { OwnerService } from '../owner.service';
 import {Router} from "@angular/router";
 
 
@@ -16,15 +17,16 @@ export class ListOwnersComponent implements OnInit {
   filteredOwners:Owner[]=owners;
   showIcon: boolean=false;
   message:string = '';
-  private _ownerFilter:string=' '
+  previousVal!:number;
+  private _ownerFilter:string=''
 
 
   set ownerFilter(value: string) {
-   // console.log("setter fired")
 
+   this._ownerFilter = value;
     //everytime the setter fired we need to call
     this.filterByOwner();
-    this._ownerFilter = value;
+    
 
     console.log("filter value" + this._ownerFilter);
   }
@@ -33,15 +35,24 @@ export class ListOwnersComponent implements OnInit {
     return this._ownerFilter;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private ownerService: OwnerService) {
+    
+   }
 
   editOwner(value: string){
     console.log("Edit called " + value)
     this.router.navigate(['/owneredit', value])
   }
 
-  deleteOwner(name: string){
-    console.log("delete called" + name);
+  // deleteOwner(value: Event){
+
+  //   console.log("Delete called" + value);
+  //   this.previousVal = Number(value) -1;
+  //   this.owners.splice(this.previousVal,1);
+  // }
+
+  onDelete(id:string){
+    this.ownerService.onDelete(id);
   }
 
   ngOnInit(): void {
@@ -53,10 +64,8 @@ export class ListOwnersComponent implements OnInit {
 
   filterByOwner(){
 
-    //console.log("Owner is " + this.owners);
     //filter and should display original values when user erase the content
     this.filteredOwners = this.owners.filter(owner => owner.designation.includes(this._ownerFilter));
-
 
   }
 

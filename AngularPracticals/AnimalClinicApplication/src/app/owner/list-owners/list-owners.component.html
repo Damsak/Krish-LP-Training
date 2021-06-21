@@ -18,11 +18,11 @@
               <h6>Filtered by : {{ownerFilter}}</h6>
           </div>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive" style="border-radius: 10px;">
           <!-- Show table only if there are Pets -->
-          <table class="table" *ngIf="owners.length">
+          <table class="table table-striped" *ngIf="owners.length">
               <thead>
-                  <tr>
+                  <tr class="bg-secondary">
                     <th>
                         <button class="btn btn-primary" (click)="toggleIcon()">
                             {{showIcon?"Hide":"Show"}} Avator
@@ -34,6 +34,7 @@
                   <th>Insurance Balance</th>
                   <th>RBT progress</th>
                   <th>Edit</th>
+                  <th>Delete</th>
               </tr>
           </thead>
           <tbody>
@@ -51,9 +52,14 @@
                 <td><button class="btn btn-primary" (click)="editOwner(owner.id)">
                     Edit
                 </button>
-                <td><button class="btn btn-danger" (click)="deleteOwner(owner.id)">
+
+                <td><button class="btn btn-danger" (click)="onDelete(owner.id)">
                     Delete
                 </button>
+                
+                <!-- <td><button class="btn btn-danger" (click)="deleteOwner ($event)">
+                    Delete
+                </button> -->
                 </td>
             </tr>
           </tbody>

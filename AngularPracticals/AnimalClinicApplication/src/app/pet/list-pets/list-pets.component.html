@@ -1,11 +1,12 @@
 <div class="card">
     <div class="card-body" style="width:80%; margin:0 auto;">
 
-      <div class="row">
-        <h3>
+      <div class="row ">
+        <h3 class="text-center">
             {{title}} <br/>
             {{message}} 
-          </h3>
+        </h3>
+
           <div class="col-md-2"> Animal Filter:</div>
           <div class="col-md-4">
             <input type="text" [(ngModel)]="animalFilter">   
@@ -16,11 +17,13 @@
               <h6>Filtered by : {{animalFilter}}</h6>
           </div>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive" style="border-radius: 10px;">
+
+
           <!-- Show table only if there are Pets -->
-          <table class="table" *ngIf="pets.length">
+          <table class="table table-striped" *ngIf="pets.length">
               <thead>
-                  <tr>
+                  <tr class="bg-secondary">
                     <th>
                         <button class="btn btn-primary" (click)="toggleIcon()">
                             {{showIcon?"Hide":"Show"}} Avator
@@ -32,6 +35,7 @@
                   <th>Insurance Balance</th>
                   <th>RBT progress</th>
                   <th>Edit</th>
+                  <th>Delete</th>
               </tr>
           </thead>
           <tbody>
@@ -47,14 +51,11 @@
                <td><ac-progress-bar 
                 [progress]='pet.rbtProgress'
                 [firstName]='pet.firstName'
-                (progressClick)='onMessageReceived($event)'
-                ></ac-progress-bar></td>
-
-
+                (progressClick)='onMessageReceived($event)'></ac-progress-bar></td>
                 <td><button class="btn btn-primary" (click)="editPet(pet.id)">
                     Edit
                 </button>
-                <td><button class="btn btn-danger" (click)="deletePet(pet.id)">
+                <td><button class="btn btn-danger" (click)="onDelete(pet.id)">
                     Delete
                 </button>
                 </td>

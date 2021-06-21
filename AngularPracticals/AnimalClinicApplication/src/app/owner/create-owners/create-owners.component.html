@@ -1,36 +1,48 @@
 <div class="card">
-    <div class="card-header" style="width: 50%; margin: 0 auto;">
-        <h1>Add a Owner</h1>
+    <div class="card-header text-center" style="width: 50%; margin: 0 auto; font-family: 'Oswald'">
+        <h1>Add Owner</h1>
     </div>
-    <div class="card-body" style="width:800px; margin:0 auto;">
+    <div class="col-sm-3 sidenav" style="width: 200px;">
+        <button type="button" class="btn btn-secondary" (click)="navigatetoOwnerList()" style="width: 200px; margin-left: 10px;"> Go back </button> 
+    </div>
+    <div class="card-body" style="width:1000px; margin:0 auto; border-radius: 5; border: 2px solid #161615; border-radius: 10px; margin-bottom: 20px;">
 
          <!-- Create "ngSubmit" event and send data -->
          <form #petForm = "ngForm" (ngSubmit) = "getOwnerValues(petForm.value)" >
             <div class="form-group">
                 <label for="firstName">First Name</label>
-                <input type="text"  name="firstName"  class="form-control" id="firstName"  placeholder="Enter First Name">
+              <!-- create Template variable firstName and use value as ngModel. Then Angular set this template variable to this ngModel directive -->
+                <input type="text" ngModel name="firstName" required   #firstName ="ngModel" class="form-control" id="firstName"  placeholder="Enter First Name">
+                
+              <!--ngModel object contains these fields like touch, valid which is used to validate.  -->
+                <div class="alert alert-danger" *ngIf=" firstName.touched && !firstName.valid"> First Name is required</div>
             </div>
             <br>
 
             <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lastName"  ngModel name="lastName" placeholder="Enter Last Name">
+                <input type="text" class="form-control" id="lastName"   required   #lastName ="ngModel" ngModel name="lastName" placeholder="Enter Last Name">
+                <div class="alert alert-danger" *ngIf=" lastName.touched && !lastName.valid"> Last Name is required</div>
             </div>
             <br>
             <div class="form-group">
                 <label for="designation">Designation</label>
-                <input type="text" class="form-control" id="designation"  ngModel name="designation" placeholder="Enter Designation">
+                <input type="text" class="form-control" id="designation"  required   #designation ="ngModel" ngModel name="designation" placeholder="Enter Designation">
+                <div class="alert alert-danger" *ngIf=" designation.touched && !designation.valid"> Designation is required</div>
             </div>
             <br>
             <div class="form-group">
                 <label for="insuranceBalance">Insurance Balance</label>
-                <input type="number" class="form-control" id="insuranceBalance"  ngModel name="insuranceBalance" placeholder="Enter insuranceBalance">
+                <input type="number" class="form-control" id="insuranceBalance"  required  #insuranceBalance ="ngModel" ngModel name="insuranceBalance" placeholder="Enter insuranceBalance">
+                <div class="alert alert-danger" *ngIf=" insuranceBalance.touched && !insuranceBalance.valid"> Insurance Balance is required</div>
             </div>
             <br>
             <div class="form-group">
                 <label for="rbt">rbt</label>
-                <input type="number" class="form-control" id="rbt"   ngModel name="rbt" placeholder="Enter RBT Progress">
+                <input type="number" class="form-control" id="rbt" required #rbt ="ngModel" ngModel name="rbtProgress" placeholder="Enter RBT Progress">
+                <div class="alert alert-danger" *ngIf=" rbt.touched && !rbt.valid"> RBT Progress is required</div>
             </div>
+            <br>
             <br>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

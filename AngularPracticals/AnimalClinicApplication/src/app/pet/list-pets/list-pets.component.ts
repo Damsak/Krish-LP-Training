@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import pets from '../data/pets.json';
 import { Pet } from '../petmodel/Pets.model';
 import {Router} from "@angular/router";
+import { PetService } from '../pet.service';
+
 
 @Component({
   selector: 'ac-list-pets',
@@ -22,16 +24,17 @@ export class ListPetsComponent implements OnInit {
   set animalFilter(value: string) {
     console.log("setter fired" + value)
 
+    this._animalFilter = value;
     //everytime the setter fired we need to call
     this.filterByAnimal();
-    this._animalFilter = value;
+  
   }
 
   get animalFilter(): string {
     return this._animalFilter;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private petService: PetService) { }
 
   editPet(value: string){
     console.log("Edit called " + value)
@@ -39,8 +42,12 @@ export class ListPetsComponent implements OnInit {
     this.router.navigate(['/petedit', value])
   }
 
-  deletePet(name: string){
-    console.log("delete called" + name);
+  // deletePet(name: string){
+  //   console.log("delete called" + name);
+  // }
+
+  onDelete(id:string){
+    this.petService.onDelete(id);
   }
 
   ngOnInit(): void {
