@@ -42,10 +42,6 @@ export class ListPetsComponent implements OnInit {
     this.router.navigate(['/petedit', value])
   }
 
-  // deletePet(name: string){
-  //   console.log("delete called" + name);
-  // }
-
   onDelete(id:string){
     this.petService.onDelete(id);
   }
@@ -59,7 +55,6 @@ export class ListPetsComponent implements OnInit {
 
   filterByAnimal(){
 
-    console.log(this.pets);
     //filter and should display original values when user erase the content
     this.filteredPets = this.pets.filter(pet => pet.designation.includes(this._animalFilter));
 

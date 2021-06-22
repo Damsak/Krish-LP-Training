@@ -30,7 +30,7 @@ onDelete(id:string) {
     this.pets.splice(index,1);
 }
 
-onGetOwner(id:string) {
+onGetPet(id:string) {
     return this.pets.find(x => x.id === id);
 
 }

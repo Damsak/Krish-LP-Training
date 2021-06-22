@@ -12,35 +12,35 @@
             <fieldset disabled>
                 <div class="form-group">
                     <label for="disabledTextInput">ID</label>
-                    <input type="text"  name="id" class="form-control" id="firstName" [ngModel] = "id">
+                    <input type="text"  name="id" class="form-control" id="firstName" [ngModel] = "finalPet.id">
                 </div>
             </fieldset>
 
 
             <div class="form-group">
               <label for="firstName">First Name</label>
-              <input type="text" class="form-control" name="firstName" [ngModel] = "firstName">
+              <input type="text" class="form-control" name="firstName" [ngModel] = "finalPet.firstName">
             </div>
             <br>
 
             <div class="form-group">
                 <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" name="lastName" [ngModel] = "lastName">
+                <input type="text" class="form-control" name="lastName" [ngModel] = "finalPet.lastName">
             </div>
             <br>
             <div class="form-group">
                 <label for="designation">Designation</label>
-                <input type="text" class="form-control" name="designation" [ngModel] = "designation">
+                <input type="text" class="form-control" name="designation" [ngModel] = "finalPet.designation">
             </div>
             <br>
             <div class="form-group">
                 <label for="insuranceBalance">Insurance Balance</label>
-                <input type="text" class="form-control" name="insuranceBalance" [ngModel] = "insuranceBalance">
+                <input type="text" class="form-control" name="insuranceBalance" [ngModel] = "finalPet.insuranceBalance">
             </div>
             <br>
             <div class="form-group">
                 <label for="rbt">RBT(Role Based Training Progress)</label>
-                <input type="text" class="form-control" name="rbtProgress" [ngModel] = "rbtProgress">
+                <input type="text" class="form-control" name="rbtProgress" [ngModel] = "finalPet.rbtProgress">
             </div>
             <br>
             <button type="submit" class="btn btn-primary">Edit</button>

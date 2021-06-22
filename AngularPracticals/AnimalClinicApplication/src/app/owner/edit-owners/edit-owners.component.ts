@@ -13,51 +13,26 @@ import { Owner } from '../ownermodel/Owners.model';
 export class EditOwnersComponent implements OnInit {
 
   id: any;
-  firstName:any;
-  lastName:any;
-  designation:any;
-  insuranceBalance:any;
-  rbtProgress:any;
   private sub: any;
-
-  owner: Owner = {
-    id: '',
-    firstName:'',
-    lastName:'',
-    designation:'',
-    insuranceBalance:0,
-    rbtProgress:0,
-    icon:'',
-  }
+  finalOwner: any;
 
 
   constructor(private router: Router,private route: ActivatedRoute, private ownerService: OwnerService) {
    }
 
   ngOnInit(): void {
-    console.log(pets)
-    this.sub = this.route.params.subscribe(params => {
+      this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       console.log("Needed object" + pets[this.id])     
-      // In a real app: dispatch action to load the details here.
    
-     // id:Number = pets[this.id - 1];
-     this.firstName = pets[this.id - 1].firstName
-     this.lastName = pets[this.id - 1].lastName
-     this.designation = pets[this.id - 1].designation
-     this.insuranceBalance = pets[this.id - 1].insuranceBalance
-     this.rbtProgress = pets[this.id - 1].rbtProgress  
-
+      this.finalOwner = this.ownerService.onGetOwner(this.id);
 
     });
 
 
   }
 
-
   updateOwner(values:Owner){
-
-    // console.log("Received Values from owner update " + JSON.stringify(values));
 
     this.ownerService.onUpdate(values);
     this.router.navigateByUrl('/ownerlist');
