@@ -8,6 +8,15 @@
     <div class="card-body" style="width:1000px; margin:0 auto; border-radius: 5; border: 2px solid #161615; border-radius: 10px; margin-bottom: 20px;">
 
         <form #PetForm = "ngForm" (ngSubmit) = "updatePet(PetForm.value)">
+
+            <fieldset disabled>
+                <div class="form-group">
+                    <label for="disabledTextInput">ID</label>
+                    <input type="text"  name="id" class="form-control" id="firstName" [ngModel] = "id">
+                </div>
+            </fieldset>
+
+
             <div class="form-group">
               <label for="firstName">First Name</label>
               <input type="text" class="form-control" name="firstName" [ngModel] = "firstName">

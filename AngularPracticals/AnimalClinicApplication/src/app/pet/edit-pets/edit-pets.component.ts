@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import pets from '../data/pets.json';
 import {Router} from "@angular/router";
 import { PetService } from '../pet.service';
+import { Pet } from '../petmodel/Pets.model';
 
 
 
@@ -21,6 +22,7 @@ export class EditPetsComponent implements OnInit {
   rbtProgress:any;
   private sub: any;
 
+
   constructor(private router: Router,private route: ActivatedRoute,private petService: PetService) {
    }
 
@@ -28,9 +30,11 @@ export class EditPetsComponent implements OnInit {
   ngOnInit(): void {
     console.log(pets)
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-      console.log("Needed object" + pets[this.id])     
+    this.id = +params['id']; // (+) converts string 'id' to a number
+    console.log("Needed object" + pets[this.id])     
       // In a real app: dispatch action to load the details here.
+
+
    
      // id:Number = pets[this.id - 1];
      this.firstName = pets[this.id - 1].firstName
@@ -41,10 +45,12 @@ export class EditPetsComponent implements OnInit {
     });
   }
 
-  updatePet(values:any){
+  updatePet(values:Pet){
 
-    console.log("Received Values from Pet updateeee " + values.firstName + values.designation);
+    // console.log("Received Values from owner update " + JSON.stringify(values));
 
+    this.petService.onUpdate(values);
+    this.router.navigateByUrl('/petlist');
   }
 
  // name:string = pets[this.id];

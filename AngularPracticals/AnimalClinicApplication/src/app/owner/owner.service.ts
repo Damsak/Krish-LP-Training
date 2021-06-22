@@ -33,6 +33,26 @@ onDelete(id:string) {
 onGetOwner(id:string) {
     return this.owners.find(x => x.id === id);
 }
+
+
+onUpdate(owner: Owner){
+
+    
+    let targetOwner :any;
+
+    targetOwner = this.owners.find(x => x.id === owner.id);
+    let index = this.owners.indexOf(targetOwner,0);
+
+
+    targetOwner.firstName = owner.firstName;
+    targetOwner.lastName = owner.lastName;
+    targetOwner.designation = owner.designation;
+    targetOwner.insuranceBalance = owner.insuranceBalance;
+    targetOwner.rbtProgress = owner.rbtProgress;
+
+    owners[index] = targetOwner;
+
+}
     
 }
 

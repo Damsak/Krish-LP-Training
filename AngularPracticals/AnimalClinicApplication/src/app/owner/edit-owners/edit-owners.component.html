@@ -8,6 +8,14 @@
     <div class="card-body"  style="width:1000px; margin:0 auto; border-radius: 5; border: 2px solid #161615; border-radius: 10px; margin-bottom: 20px;">
 
         <form #OwnerForm = "ngForm" (ngSubmit) = "updateOwner(OwnerForm.value)">
+
+            <fieldset disabled>
+            <div class="form-group">
+                <label for="disabledTextInput">ID</label>
+                <input type="text"  name="id" class="form-control" id="firstName" [ngModel] = "id">
+            </div>
+            </fieldset>
+
             <div class="form-group">
               <label for="firstName">First Name</label>
               <input type="text"  name="firstName" class="form-control" id="firstName" [ngModel] = "firstName">
@@ -31,12 +39,12 @@
 
             <div class="form-group">
                 <label for="rbt">rbt</label>
-                <input type="text" class="form-control" name="rbt" [ngModel] = "rbtProgress">
+                <input type="text" class="form-control" name="rbtProgress" [ngModel] = "rbtProgress">
             </div>
             <br>
             <br>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update Owner</button>
         </form>
 
   </div>

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import {Router} from "@angular/router";
 import pets from '../data/pets.json';
 import { OwnerService } from '../owner.service';
+import { Owner } from '../ownermodel/Owners.model';
 
 @Component({
   selector: 'ac-edit-owners',
@@ -19,7 +20,16 @@ export class EditOwnersComponent implements OnInit {
   rbtProgress:any;
   private sub: any;
 
- 
+  owner: Owner = {
+    id: '',
+    firstName:'',
+    lastName:'',
+    designation:'',
+    insuranceBalance:0,
+    rbtProgress:0,
+    icon:'',
+  }
+
 
   constructor(private router: Router,private route: ActivatedRoute, private ownerService: OwnerService) {
    }
@@ -37,14 +47,20 @@ export class EditOwnersComponent implements OnInit {
      this.designation = pets[this.id - 1].designation
      this.insuranceBalance = pets[this.id - 1].insuranceBalance
      this.rbtProgress = pets[this.id - 1].rbtProgress  
+
+
     });
+
+
   }
 
 
-  updateOwner(values:any){
+  updateOwner(values:Owner){
 
-    console.log("Received Values from owner update " + values.firstName + values.designation);
+    // console.log("Received Values from owner update " + JSON.stringify(values));
 
+    this.ownerService.onUpdate(values);
+    this.router.navigateByUrl('/ownerlist');
   }
 
 

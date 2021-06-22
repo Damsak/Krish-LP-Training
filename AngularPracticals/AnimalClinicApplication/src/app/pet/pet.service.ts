@@ -34,6 +34,26 @@ onGetOwner(id:string) {
     return this.pets.find(x => x.id === id);
 
 }
+
+
+onUpdate(pet: Pet){
+
+    
+    let targetPet :any;
+
+    targetPet = this.pets.find(x => x.id === pet.id);
+    let index = this.pets.indexOf(targetPet,0);
+
+
+    targetPet.firstName = pet.firstName;
+    targetPet.lastName = pet.lastName;
+    targetPet.designation = pet.designation;
+    targetPet.insuranceBalance = pet.insuranceBalance;
+    targetPet.rbtProgress = pet.rbtProgress;
+
+    pets[index] = targetPet;
+
+}
     
 }
 
