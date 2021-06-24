@@ -4,7 +4,13 @@ Details about the projects in this folder.
 
 ## Important 
 
-### ApplicationWithNewServices - 15,16 Videos
+### ApplicationWithNewServices - 15,16,17,and 18 Videos
+
+From Video 18 -
+- Implemented Circuit breaker pattern.
+
+From Video 17 -
+- Added Load balancing
 
 From Video 16 -
 

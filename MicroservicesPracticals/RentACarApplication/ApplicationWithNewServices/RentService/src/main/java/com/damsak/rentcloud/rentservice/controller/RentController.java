@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 @RestController
 @RequestMapping(value = "/services/rents")
@@ -21,7 +22,7 @@ public class RentController {
     }
 
     @GetMapping(value = "/{id}")
-    public Response getRent(@PathVariable int id, @RequestParam(required = false) String type) {
+    public Response getRent(@PathVariable int id, @RequestParam(required = false) String type) throws ExecutionException, InterruptedException{
 
         //if the type is not there, we only return rent model
         if(type==null){

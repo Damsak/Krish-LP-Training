@@ -4,6 +4,7 @@ import com.damsak.rentcloud.commons.model.rent.Rent;
 import com.damsak.rentcloud.rentservice.model.DetailResponse;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface RentService {
 
@@ -13,5 +14,5 @@ public interface RentService {
 
     List<Rent> findAll();
 
-    DetailResponse findDetailResponse(int id);
+    DetailResponse findDetailResponse(int id) throws ExecutionException, InterruptedException;
 }
