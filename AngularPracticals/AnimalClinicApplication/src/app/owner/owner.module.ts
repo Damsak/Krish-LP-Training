@@ -6,6 +6,8 @@ import { CreateOwnersComponent } from './create-owners/create-owners.component';
 import { OwnerRoutingModule } from './owner-routing.module';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { RouterModule } from '@angular/router';
     CreateOwnersComponent
   ], 
   imports: [
+    HttpClientModule,
     CommonModule,
     FormsModule,
     RouterModule

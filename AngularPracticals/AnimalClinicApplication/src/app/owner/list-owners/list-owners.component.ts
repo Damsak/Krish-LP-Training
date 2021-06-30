@@ -56,6 +56,8 @@ export class ListOwnersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+ //   this.ownerService.onConfig().subscribe(val => console.log(val));
   }
 
   toggleIcon(){

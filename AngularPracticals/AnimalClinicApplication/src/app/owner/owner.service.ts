@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import owners from './data/pets.json';
 import {Owner} from './ownermodel/Owners.model';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -11,7 +12,17 @@ export class OwnerService {
 
     owners: Owner[] = owners;
 
-constructor() {}
+    // rootOwners: any;
+
+    // readonly ROOT_URL = 'https://jsonplaceholder.typicode.com'
+
+    
+
+constructor(private http:HttpClient) {}
+
+// onConfig() {
+//     return this.http.get(this.ROOT_URL + '/posts');
+// }
 
 onGet() {
     return this.owners;
