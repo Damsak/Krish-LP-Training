@@ -1,6 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query, UsePipes, ValidationPipe } from '@nestjs/common';
 import { request } from 'express';
+import { OwnerTierValidationPipe } from './owner-tier-validation.pipe';
 import { Owner, OwnerTier } from './owner.model';
+import { OwnerCreateDto } from './OwnerCreate.dto';
 import { OwnersService } from './owners.service';
 import { OwnerSearchDto } from './OwnerSearch.dto';
 import { OwnerUpdateDto } from './OwnerUpdate.dto';
@@ -17,6 +19,7 @@ export class OwnersController {
     //use decorator called query to get the url parameter
     //route the traffic based on parameter
     @Get()
+    @UsePipes(ValidationPipe)
     getAllOwners(@Query() param:OwnerSearchDto){
       
         //if the object has any length go to filter. else go to no filter
@@ -32,17 +35,26 @@ export class OwnersController {
         
     }
 
-    
     @Post()
-    createOwner(@Body('firstName') firstName: string,
-    @Body('lastName') lastName: string,
-    @Body('designation') designation: string,
-    @Body('nearestCity') nearestCity: string,
-    @Body('tier') tier:OwnerTier,){
-
-    return this.ownersService.createOwner(firstName,lastName,designation,nearestCity,tier)
-
+    @UsePipes(ValidationPipe)
+    @UsePipes(new OwnerTierValidationPipe()) 
+    createOwner(@Body()  ownerCreateDto :OwnerCreateDto){
+    return this.ownersService.createOwner(ownerCreateDto)
     }
+
+
+
+
+    // @Post()
+    // createOwner(@Body('firstName') firstName: string,
+    // @Body('lastName') lastName: string,
+    // @Body('designation') designation: string,
+    // @Body('nearestCity') nearestCity: string,
+    // @Body('tier') tier:OwnerTier,){
+
+    // return this.ownersService.createOwner(firstName,lastName,designation,nearestCity,tier)
+
+    // }
 
     //Another way to create Owner
     // @Post()

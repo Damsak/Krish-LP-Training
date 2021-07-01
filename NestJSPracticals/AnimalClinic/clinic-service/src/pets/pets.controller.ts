@@ -1,5 +1,8 @@
-import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Post, Put, Query, UsePipes } from '@nestjs/common';
+import { PetLocationValidationPipe } from './pet-location-validation.pipe';
 import { Pet } from './pet.model';
+import { PetCreateDto } from './PetCreate.dto';
 import { PetsService } from './pets.service';
 import { PetSearchDto } from './PetSearch.dto';
 import { PetUpdateDto } from './PetUpdate.dto';
@@ -20,8 +23,7 @@ export class PetsController {
       
         //if the object has any length go to filter. else go to no filter
         if(Object.keys(param).length) {
-            console.log(param)
-            console.log('filter')
+
             return this.petsService.petSearch(param)
         } else {
             console.log('No filter')
@@ -32,13 +34,21 @@ export class PetsController {
     }
 
     
+    // @Post()
+    // createOwner(@Body('name') name: string,
+    // @Body('type') type: string,
+    // @Body('condition') condition: string ){
+
+    // return this.petsService.createPet(name,type,condition)
+
+    // }
+
+
     @Post()
-    createOwner(@Body('name') name: string,
-    @Body('type') type: string,
-    @Body('condition') condition: string ){
-
-    return this.petsService.createPet(name,type,condition)
-
+    @UsePipes(ValidationPipe)
+    @UsePipes(new PetLocationValidationPipe()) 
+    createPet(@Body()  petCreateDto : PetCreateDto){
+    return this.petsService.createPet(petCreateDto)
     }
 
 

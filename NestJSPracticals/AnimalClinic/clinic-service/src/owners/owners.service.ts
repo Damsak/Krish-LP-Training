@@ -1,8 +1,9 @@
-import { HttpCode, Injectable } from '@nestjs/common';
+import { HttpCode, Injectable, NotFoundException } from '@nestjs/common';
 import { Owner, OwnerStatus, OwnerTier } from './owner.model';
 import {v1 as uuid} from 'uuid';
 import { OwnerSearchDto } from './OwnerSearch.dto';
 import { OwnerUpdateDto } from './OwnerUpdate.dto';
+import { OwnerCreateDto } from './OwnerCreate.dto';
 
 @Injectable()
 export class OwnersService {
@@ -13,11 +14,35 @@ getAllOwners() {
     return this.owners;
 }
 
-createOwner(firstName: string, lastName: string, designation: string, nearestCity: string, tier: OwnerTier){
-    //to create owner we need to get data. 
+// createOwner(firstName: string, lastName: string, designation: string, nearestCity: string, tier: OwnerTier){
 
-    //here we use destruction. parameters come in same order. therefor they get assigned accordingly
-    const Owner = {
+
+//     //here we use destruction. parameters come in same order. therefor they get assigned accordingly
+//     const Owner = {
+//         id:uuid(), // uuid helps to get a new id everytime when a new owner gets created
+//         firstName,
+//         lastName,
+//         designation,
+//         nearestCity,
+//         tier,
+//         status:OwnerStatus.ACTIVE //STATUS IS ACTIVE WHEN WE CREATE AN OWNER
+//     }
+
+//     this.owners.push(Owner)
+//     return Owner;
+
+// }
+
+createOwner(ownerCreateDto : OwnerCreateDto) {
+
+    const {
+        firstName,
+        lastName,
+        designation,
+        nearestCity,
+        tier } = ownerCreateDto
+
+        const owner = {
         id:uuid(), // uuid helps to get a new id everytime when a new owner gets created
         firstName,
         lastName,
@@ -27,9 +52,8 @@ createOwner(firstName: string, lastName: string, designation: string, nearestCit
         status:OwnerStatus.ACTIVE //STATUS IS ACTIVE WHEN WE CREATE AN OWNER
     }
 
-    this.owners.push(Owner)
-    return Owner;
-
+    this.owners.push(owner)
+    return owner;
 }
 
 ownerSearch(ownerSearchDto:OwnerSearchDto) {
@@ -46,7 +70,6 @@ ownerSearch(ownerSearchDto:OwnerSearchDto) {
     //if user set the status
     if(status) {
 
-    //console.log(owners)
 
     //filter owners with the given status
     owners = owners.filter(owner => owner.status === status)
@@ -65,7 +88,13 @@ ownerSearch(ownerSearchDto:OwnerSearchDto) {
 
 getOwnerById(id:string):Owner {
     const owners = this.getAllOwners();
-    return owners.find(owner => owner.id === id)
+    let owner = owners.find(owner => owner.id === id)
+
+    if(!owner){
+        throw new NotFoundException(`${id} does not exist`)
+    }
+
+    return owner;
 }
 
 updateOwner(ownerUpdatedto:OwnerUpdateDto): Owner{

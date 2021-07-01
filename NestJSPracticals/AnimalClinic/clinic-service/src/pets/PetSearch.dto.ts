@@ -1,7 +1,7 @@
-import { Pet } from "./pet.model";
+import { locationType, Pet } from "./pet.model";
 
-export interface PetSearchDto {
+export class PetSearchDto {
     //user can filter base on type and also on name
-    type:string
+    location:locationType
     name:string
 }
