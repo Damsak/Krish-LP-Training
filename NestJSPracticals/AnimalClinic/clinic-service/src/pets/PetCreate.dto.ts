@@ -1,9 +1,9 @@
 import { IsNotEmpty, NotEquals } from "class-validator";
-import { locationType } from "./pet.model";
+import { locationType } from "./Pet.enum";
 
 export class PetCreateDto {
     id: string
-    @IsNotEmpty() //Firstname mandatory
+    @IsNotEmpty() 
     name: string
     type: string
     @IsNotEmpty()

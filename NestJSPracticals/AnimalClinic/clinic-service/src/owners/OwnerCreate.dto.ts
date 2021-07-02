@@ -1,5 +1,5 @@
 import { IsNotEmpty, NotEquals } from "class-validator";
-import { OwnerStatus, OwnerTier } from "./owner.model";
+import { OwnerStatus, OwnerTier } from "./owner.enum";
 
 export class OwnerCreateDto {
     id: string

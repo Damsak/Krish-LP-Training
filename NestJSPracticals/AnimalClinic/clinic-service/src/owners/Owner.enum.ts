@@ -1,14 +1,3 @@
-
-export interface Owner {
-    id: string
-    firstName: string
-    lastName: string
-    designation: string
-    nearestCity: string
-    tier:OwnerTier
-    status:OwnerStatus
-}
-
 export enum OwnerTier {
     TIER_ONE = 'TIER_ONE',
     TIER_TWO = 'TIER_TWO',
