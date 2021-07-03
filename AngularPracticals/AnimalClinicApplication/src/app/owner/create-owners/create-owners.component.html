@@ -32,15 +32,15 @@
             </div>
             <br>
             <div class="form-group">
-                <label for="insuranceBalance">Insurance Balance</label>
-                <input type="number" class="form-control" id="insuranceBalance"  required  #insuranceBalance ="ngModel" ngModel name="insuranceBalance" placeholder="Enter insuranceBalance">
-                <div class="alert alert-danger" *ngIf=" insuranceBalance.touched && !insuranceBalance.valid"> Insurance Balance is required</div>
+                <label for="nearestCity">Nearest City</label>
+                <input type="text" class="form-control" id="nearestCity"  required  #nearestCity ="ngModel" ngModel name="nearestCity" placeholder="Enter Nearest City">
+                <div class="alert alert-danger" *ngIf=" nearestCity.touched && !nearestCity.valid"> NearestCity is required</div>
             </div>
             <br>
             <div class="form-group">
-                <label for="rbt">rbt</label>
-                <input type="number" class="form-control" id="rbt" required #rbt ="ngModel" ngModel name="rbtProgress" placeholder="Enter RBT Progress">
-                <div class="alert alert-danger" *ngIf=" rbt.touched && !rbt.valid"> RBT Progress is required</div>
+                <label for="tier">Tier</label>
+                <input type="tier" class="form-control" id="tier" required #tier ="ngModel" ngModel name="tier" placeholder="Enter Tier">
+                <div class="alert alert-danger" *ngIf=" tier.touched && !tier.valid">Tier is required</div>
             </div>
             <br>
             <br>

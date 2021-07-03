@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import owners from './data/pets.json';
 import {Owner} from './ownermodel/Owners.model';
 import { HttpClient } from '@angular/common/http';
+import {Router} from "@angular/router";
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -11,60 +13,92 @@ import { HttpClient } from '@angular/common/http';
 export class OwnerService {
 
     owners: Owner[] = owners;
+    status: any;
+    ownerId:any;
+    updatedOwner:any;
+    errorMessage:any;
+   
 
-    // rootOwners: any;
+    rootOwners: any;
 
-    // readonly ROOT_URL = 'https://jsonplaceholder.typicode.com'
+     readonly ROOT_URL = 'http://localhost:3000/owners'
 
     
 
-constructor(private http:HttpClient) {}
+constructor(private http:HttpClient,private router: Router) {}
 
-// onConfig() {
-//     return this.http.get(this.ROOT_URL + '/posts');
-// }
+onConfig() {
+    return this.http.get(this.ROOT_URL);
+}
 
 onGet() {
-    return this.owners;
+    return this.http.get(this.ROOT_URL);
+    //return this.owners;
 }
 
 onAdd(owner:Owner) {
-    this.owners.push(owner)
+    console.log("Onadd values " + JSON.stringify(owner));
+
+    this.http.post<any>(this.ROOT_URL, { 
+        firstName: owner.firstName,
+        lastName: owner.lastName,
+        designation:owner.designation,
+        nearestCity:owner.nearestCity,
+        tier:owner.tier
+        }).subscribe({
+        next: data => {
+            this.ownerId = data.id;
+        },
+        error: error => {
+            this.errorMessage = error.message;
+            console.error('There was an error!', error);
+        }
+    })
+
+    this.router.navigate(['/ownerlist']);
 }
 
 onDelete(id:string) {
 
-    let targetOwner :any;
-
-    targetOwner = this.owners.find(x => x.id === id);
-    let index = this.owners.indexOf(targetOwner,0);
-    this.owners.splice(index,1);
-}
-
-onGetOwner(id:string) {
-    return this.owners.find(x => x.id === id);
-}
-
-
-onUpdate(owner: Owner){
-
-    
-    let targetOwner :any;
-
-    targetOwner = this.owners.find(x => x.id === owner.id);
-    let index = this.owners.indexOf(targetOwner,0);
-
-
-    targetOwner.firstName = owner.firstName;
-    targetOwner.lastName = owner.lastName;
-    targetOwner.designation = owner.designation;
-    targetOwner.insuranceBalance = owner.insuranceBalance;
-    targetOwner.rbtProgress = owner.rbtProgress;
-
-    owners[index] = targetOwner;
+    this.http.delete(this.ROOT_URL + `/${id}`)
+    .subscribe(() => this.status = 'Delete successful');
 
 }
-    
+
+// onGetOwner(id:string) {
+
+//     console.log("Recied id is  " + id)
+
+//     this.http.get(this.ROOT_URL + `/${id}`)
+//     .subscribe({
+//         next: data => {
+//             this.updatedOwner = data;
+//         },
+//     })
+
+
+// return this.updatedOwner;
+
+// // console.log("Updated - Owner "  + JSON.stringify(this.updatedOwner));
+//    // console.log("value onGetOwner" + JSON.stringify(this.http.get(this.ROOT_URL + `/${id}` )) );
+//   //  return this.http.get(this.ROOT_URL + `/${id}` );   
+//     //return this.owners.find(x => x.id === id);
+// }
+
+
+
+onGetNewOwner(id: string): Observable<Owner>{
+    return this.http.get<Owner>(this.ROOT_URL + `/${id}`);
+}
+
+onUpdateOwner(owner:any): Observable<Owner> {
+
+//because we only update the city. 
+    let updatedCity = {
+        "city":owner.nearestCity
+    }
+    return this.http.put<Owner>(`${this.ROOT_URL}/${owner.id}/city`, updatedCity);
+}    
 }
 
 

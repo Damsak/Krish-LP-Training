@@ -13,8 +13,11 @@ import {Router} from "@angular/router";
 export class ListOwnersComponent implements OnInit {
 
   title: string = "Pet Management System"
-  owners:Owner[]=owners;
-  filteredOwners:Owner[]=owners;
+  // owners:Owner[]=owners;
+  // filteredOwners:Owner[]=owners;
+  owners:any;
+  filteredOwners:any;
+
   showIcon: boolean=false;
   message:string = '';
   previousVal!:number;
@@ -25,7 +28,7 @@ export class ListOwnersComponent implements OnInit {
 
    this._ownerFilter = value;
     //everytime the setter fired we need to call
-    this.filterByOwner();
+    //this.filterByOwner();
     
 
     console.log("filter value" + this._ownerFilter);
@@ -44,35 +47,36 @@ export class ListOwnersComponent implements OnInit {
     this.router.navigate(['/owneredit', value])
   }
 
-  // deleteOwner(value: Event){
-
-  //   console.log("Delete called" + value);
-  //   this.previousVal = Number(value) -1;
-  //   this.owners.splice(this.previousVal,1);
-  // }
-
   onDelete(id:string){
     this.ownerService.onDelete(id);
+    //reload page after delete
+    window.location.reload();
   }
 
   ngOnInit(): void {
 
- //   this.ownerService.onConfig().subscribe(val => console.log(val));
-  }
-
-  toggleIcon(){
-    this.showIcon = !this.showIcon;
-  }
-
-  filterByOwner(){
-
-    //filter and should display original values when user erase the content
-    this.filteredOwners = this.owners.filter(owner => owner.designation.includes(this._ownerFilter));
+  this.ownerService.onConfig().subscribe((data)=> this.displayOwners(data));
 
   }
 
-  onMessageReceived(value: string) {
-    this.message = value;
+  displayOwners(data:any) {
+    this.owners = data;
+    console.log(data)
   }
+
+  // toggleIcon(){
+  //   this.showIcon = !this.showIcon;
+  // }
+
+  // filterByOwner(){
+
+  //   //filter and should display original values when user erase the content
+  //   this.filteredOwners = this.owners.filter(owner => owner.designation.includes(this._ownerFilter));
+
+  // }
+
+  // onMessageReceived(value: string) {
+  //   this.message = value;
+  // }
 
 }

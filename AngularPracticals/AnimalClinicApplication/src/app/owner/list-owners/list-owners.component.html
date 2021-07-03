@@ -1,11 +1,6 @@
 <div class="card">
-    <!-- <div style="width: 50%; margin: 0 auto;">
-        <h3>
-          {{title}} <br/> -->
-          <!-- {{message}}  -->
-        <!-- </h3>
-    </div> -->
-    <div class="card-body" style="width:80%; margin:0 auto;">
+
+    <!-- <div class="card-body" style="width:80%; margin:0 auto;">
       <div class="row">
           <div class="col-md-2"> Owner Filter:</div>
           <div class="col-md-4">
@@ -18,9 +13,9 @@
               <h6>Filtered by : {{ownerFilter}}</h6>
           </div>
       </div>
-      <div class="table-responsive" style="border-radius: 10px;">
+      <div class="table-responsive" style="border-radius: 10px;"> -->
           <!-- Show table only if there are Pets -->
-          <table class="table table-striped" *ngIf="owners.length">
+          <!-- <table class="table table-striped" *ngIf="owners.length">
               <thead>
                   <tr class="bg-secondary">
                     <th>
@@ -55,15 +50,72 @@
 
                 <td><button class="btn btn-danger" (click)="onDelete(owner.id)">
                     Delete
-                </button>
+                </button> -->
                 
                 <!-- <td><button class="btn btn-danger" (click)="deleteOwner ($event)">
                     Delete
                 </button> -->
+                <!-- </td>
+            </tr>
+          </tbody>
+          </table>
+      </div>
+  </div> -->
+
+
+<div class="card-body" style="width:80%; margin:0 auto;">
+      <!-- <div class="row">
+          <div class="col-md-2"> Owner Filter:</div>
+          <div class="col-md-4">
+              
+            <input type="text" [(ngModel)]="ownerFilter">   
+          </div>
+      </div> 
+      <div class="row">
+          <div class="col-md-6">
+              <h6>Filtered by : {{ownerFilter}}</h6>
+          </div>
+      </div> -->
+      <div class="table-responsive" style="border-radius: 10px;">
+          <!-- Show table only if there are Pets -->
+          <table class="table table-striped">
+              <thead>
+                  <tr class="bg-secondary">
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Designation</th>
+                  <th>NearestCity</th>
+                  <th>Tier</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let owner of owners">
+               <td>{{owner.firstName}}</td>
+               <td>{{owner.lastName}}</td> 
+               <td>{{owner.designation}}</td> 
+               <td>{{owner.nearestCity}}</td> 
+                <td>{{owner.tier}}</td> 
+
+                <td><button class="btn btn-primary" (click)="editOwner(owner._id)">
+                    Edit
+                </button>
+
+                <td><button class="btn btn-danger" (click)="onDelete(owner._id)">
+                    Delete
+                </button> 
+                
                 </td>
             </tr>
           </tbody>
           </table>
       </div>
-  </div>
+  </div> 
+
+
+
+
+
+  
 </div>

@@ -12,30 +12,61 @@ import { Owner } from '../ownermodel/Owners.model';
 })
 export class EditOwnersComponent implements OnInit {
 
-  id: any;
+
+  id:any;
+  firstName:any;
+  lastName:any;
+  designation:any;
+  nearestCity:any;
+  tier:any;
+
+
+  paramId: any;
   private sub: any;
   finalOwner: any;
+
+  updatedOwner:any;
 
 
   constructor(private router: Router,private route: ActivatedRoute, private ownerService: OwnerService) {
    }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
+
       this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id']; // (+) converts string 'id' to a number
-      console.log("Needed object" + pets[this.id])     
-   
-      this.finalOwner = this.ownerService.onGetOwner(this.id);
+      this.paramId = params['id'];
 
     });
 
+    if (this.paramId) {
+      this.ownerService.onGetNewOwner(this.paramId)
+        .subscribe(
+          res => {
+            console.log(res);
+            this.finalOwner = res;
 
+            this.id = this.finalOwner._id;
+            this.firstName =this.finalOwner.firstName;
+            this.lastName = this.finalOwner.lastName;
+            this.designation = this.finalOwner.designation;
+            this.nearestCity = this.finalOwner.nearestCity;
+            this.tier = this.finalOwner.tier
+
+          },
+          err => console.log(err)
+        )
+    }
   }
 
   updateOwner(values:Owner){
 
-    this.ownerService.onUpdate(values);
-    this.router.navigateByUrl('/ownerlist');
+    this.ownerService.onUpdateOwner(values).subscribe(
+      res => {
+        console.log(res);
+        this.router.navigateByUrl('/ownerlist')
+      },
+      err => console.log(err)
+    )
   }
 
 

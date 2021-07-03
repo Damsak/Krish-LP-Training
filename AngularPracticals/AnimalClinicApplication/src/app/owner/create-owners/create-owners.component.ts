@@ -26,7 +26,7 @@ export class CreateOwnersComponent implements OnInit {
     this.ownerService.onAdd(values);
     
     // owners.push(values);
-    this.router.navigate(['/ownerlist'])
+    //this.router.navigate(['/ownerlist'])
     
   }
 

@@ -3,7 +3,7 @@ export interface Owner {
     firstName: string
     lastName: string
     designation: string
-    insuranceBalance : number
-    rbtProgress: number
+    nearestCity : string
+    tier : string
     icon: string
 }
