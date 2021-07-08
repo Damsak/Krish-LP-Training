@@ -1,0 +1,23 @@
+{
+  "name": "hrprojectsservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./bin/service"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "lodash": "^4.17.15",
+    "morgan": "~1.9.1",
+    "nodemon": "^2.0.3",
+    "sequelize": "^5.21.10"
+  },
+  "author": "Damsak",
+  "license": "ISC"
+}
