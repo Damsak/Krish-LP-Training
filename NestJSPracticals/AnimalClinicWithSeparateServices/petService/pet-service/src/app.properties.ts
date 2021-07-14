@@ -1,0 +1,1 @@
+export const MONGO_CONNECTION = "mongodb+srv://root:root@cliniccluster.ratq1.mongodb.net/clinic?retryWrites=true&w=majority"

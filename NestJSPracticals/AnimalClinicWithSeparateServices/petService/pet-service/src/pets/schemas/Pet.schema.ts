@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 import { Document } from "mongoose";
-import { locationType } from "../Pet.enum";
+import { locationType } from "../enums/Pet.enum";
 
 //this is the nest JS way (nestJS WRAPPER)
 export type PetDocument = Pet & Document;

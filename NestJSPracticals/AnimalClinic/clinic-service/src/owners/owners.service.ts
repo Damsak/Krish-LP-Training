@@ -11,7 +11,6 @@ import { OwnerRepository } from './Owner.repository';
 export class OwnersService {
 
 constructor(private ownerRepository: OwnerRepository){
-
 }
 
 async getAllOwners():Promise<Owner[]> {
@@ -19,7 +18,6 @@ async getAllOwners():Promise<Owner[]> {
 }
 
 async createOwner(ownerCreateDto : OwnerCreateDto) : Promise <Owner> {
-
     return await this.ownerRepository.create(ownerCreateDto);
 }
 
@@ -38,16 +36,12 @@ getOwnerById(id:string):Promise<Owner> {
 }
 
 updateOwner(ownerUpdatedto:OwnerUpdateDto): Promise<Owner> {
-
     return this.ownerRepository.update(ownerUpdatedto)
-
 }
 
 async deleteOwner(id:string) : Promise <boolean>{
     
     let result = await this.ownerRepository.delete(id)
-
     return result;
 }
-
 }

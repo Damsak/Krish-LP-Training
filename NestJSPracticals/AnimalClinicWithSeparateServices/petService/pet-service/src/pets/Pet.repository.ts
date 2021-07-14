@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import { Model } from "mongoose";
-import { PetCreateDto } from "./PetCreate.dto";
-import { PetSearchDto } from "./PetSearch.dto";
-import { PetUpdateDto } from "./PetUpdate.dto";
+import { PetCreateDto } from "./dtos/PetCreate.dto";
+import { PetSearchDto } from "./dtos/PetSearch.dto";
+import { PetUpdateDto } from "./dtos/PetUpdate.dto";
 import { Pet, PetDocument } from "./schemas/Pet.schema";
 import * as mongoose from 'mongoose'
 
